@@ -1,8 +1,22 @@
-# React + Vite
+# Learning swr to for data fetching instead of using useEffect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+```javascript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+//how i used to do it using useEffect
+const [dataFetched,setDataFetched] =useState([])
+// fetch data once the component mounts
+useEffect(()=>{
+    fetchData()
+},[])
+const fetchData=(async()=>{
+    const response =await fetch("https://some-api.com")
+    if(response.ok){
+        const data =await response.json();
+        setDataFetched(data)
+    }else{
+        throw new Error("Error fetching data from the api")
+    }
+    
+})
+```
