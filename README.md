@@ -1,4 +1,4 @@
-# Learning swr to for data fetching instead of using useEffect
+# Learning swr(Stale while revalidating) to for data fetching instead of using useEffect
 
 
 ```javascript
@@ -19,4 +19,9 @@ const fetchData=(async()=>{
     }
     
 })
+```
+# using swr
+### First install the swr npm dependency
+```shell
+npm install swr
 ```
