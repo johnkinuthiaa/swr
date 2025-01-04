@@ -1,6 +1,6 @@
 
 import './App.css'
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import useSWR from "swr";
 import Spinner from "./components/Spinner.jsx";
 function App() {
@@ -14,7 +14,6 @@ function App() {
   // },[])
 
   // use swr hook
-
 
   const fetchData =(async ()=>{
     const response =await fetch(API_URL+GET_ALL,{
@@ -31,7 +30,9 @@ function App() {
     }
 
   })
-  const{isLoading,error} =useSWR(API_URL+GET_ALL,fetchData)
+  const{isLoading,error} =useSWR(API_URL+GET_ALL,fetchData,{
+    revalidateOnReconnect:true
+  })
   if(error)return <div>Failed to load</div>
   if(isLoading) return<Spinner/>
   const petContainer ={
